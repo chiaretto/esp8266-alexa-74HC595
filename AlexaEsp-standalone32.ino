@@ -13,9 +13,9 @@
 #define TurnOnOffStatus   D6 //Status
 
 #define pinSH_CP D0   //Pino Clock
-#define pinST_CP D1    //Pino Latch
-#define pinDS    D2    //Pino Data
-#define qtdeCI   4    //Qtd de CIs
+#define pinST_CP D1   //Pino Latch
+#define pinDS    D2   //Pino Data
+#define qtdeCI   4    //Qtd CIs
 
 #define ON      0 // Low
 #define OFF     1 // High
@@ -61,111 +61,111 @@ void LightChanged31(uint8_t brightness);
 void LightChanged32(uint8_t brightness);
 
 // WiFi Credentials
-const char* ssid = "CHIARETTO";
-const char* password = "starcraft";
+const char* ssid = "NOME REDE WIFI";
+const char* password = "SENHA REDE WIFI";
 
 // device names
-String DeviceName1  = "Paflon Sala";
+String DeviceName1  = "S01";
 #define RelayPin1     1
 
-String DeviceName2 = "Spot Sala";
+String DeviceName2 = "S02";
 #define RelayPin2     2
 
-String DeviceName3 = "Paflon Quarto Casal";
+String DeviceName3 = "S03";
 #define RelayPin3     3
 
-String DeviceName4 = "Spot Quarto Casal";
+String DeviceName4 = "S04";
 #define RelayPin4     4
 
-String DeviceName5 = "Paflon Quarto Eduardo";
+String DeviceName5 = "S05";
 #define RelayPin5     5
 
-String DeviceName6 = "Spot Quarto Eduardo";
+String DeviceName6 = "S06";
 #define RelayPin6     6
 
-String DeviceName7 = "Paflon Banheiro";
+String DeviceName7 = "S07";
 #define RelayPin7     7
 
-String DeviceName8 = "Spot Banheiro";
+String DeviceName8 = "S08";
 #define RelayPin8     8
 
-String DeviceName9 = "Closet";
+String DeviceName9 = "S09";
 #define RelayPin9     9
 
-String DeviceName10  = "Paflon Suite";
+String DeviceName10  = "S10";
 #define RelayPin10     10
 
-String DeviceName11  = "Spot Suite";
+String DeviceName11  = "S11";
 #define RelayPin11     11
 
-String DeviceName12  = "Paflon Sala de Jantar";
+String DeviceName12  = "S12";
 #define RelayPin12     12
 
-String DeviceName13  = "Spot Central Sala de Jantar";
+String DeviceName13  = "S13";
 #define RelayPin13     13
 
-String DeviceName14  = "Spot Lateral Sala de Jantar";
+String DeviceName14  = "S14";
 #define RelayPin14     14
 
-String DeviceName15  = "Paflon Cozinha";
+String DeviceName15  = "S15";
 #define RelayPin15     15
 
-String DeviceName16 = "Spot Cozinha";
+String DeviceName16 = "S16";
 #define RelayPin16     16
 
-String DeviceName17  = "Muro";
+String DeviceName17  = "S17";
 #define RelayPin17     17
 
-String DeviceName18  = "Jardim Inverno";
+String DeviceName18  = "S18";
 #define RelayPin18     18
 
-String DeviceName19  = "Corredor";
+String DeviceName19  = "S19";
 #define RelayPin19     19
 
-String DeviceName20  = "Varanda";
+String DeviceName20  = "S20";
 #define RelayPin20     20
 
-String DeviceName21  = "Porta da Sala";
+String DeviceName21  = "S21";
 #define RelayPin21     21
 
-String DeviceName22  = "Garagem";
+String DeviceName22  = "S22";
 #define RelayPin22     22
 
-String DeviceName23  = "Abajur Fabiano";
+String DeviceName23  = "S23";
 #define RelayPin23     23
 
-String DeviceName24  = "Abajur Juliana";
+String DeviceName24  = "S24";
 #define RelayPin24     24
 
-String DeviceName25 = "Trilho Sala";
+String DeviceName25 = "S25";
 #define RelayPin25     25
 
-String DeviceName26  = "Jardim Garagem";
+String DeviceName26  = "S26";
 #define RelayPin26     26
 
-String DeviceName27  = "Luzes Natal";
+String DeviceName27  = "S27";
 #define RelayPin27     27
 
-String DeviceName28  = "28";
+String DeviceName28  = "S28";
 #define RelayPin28     28
 
-String DeviceName29  = "29";
+String DeviceName29  = "S29";
 #define RelayPin29     29
 
-String DeviceName30  = "30";
+String DeviceName30  = "S30";
 #define RelayPin30     30
 
-String DeviceName31  = "31";
+String DeviceName31  = "S31";
 #define RelayPin31     31
 
-String DeviceName32  = "32";
+String DeviceName32  = "S32";
 #define RelayPin32     32
 
 boolean wifiConnected = false;
 
 Espalexa espalexa;
 
-//our callback functions
+//Callback functions
 void LightChanged1(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin1);}else{TurnOff(RelayPin1);}}
 void LightChanged2(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin2);}else{TurnOff(RelayPin2);}}
 void LightChanged3(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin3);}else{TurnOff(RelayPin3);}}
@@ -199,7 +199,6 @@ void LightChanged30(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin30);
 void LightChanged31(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin31);}else{TurnOff(RelayPin31);}}
 void LightChanged32(uint8_t brightness) {if(brightness==255){TurnOn(RelayPin32);}else{TurnOff(RelayPin32);}}
 
-
 void TurnOn(uint8_t port) {
     digitalWrite(TurnOnOffStatus, ON);
     delay(100);
@@ -208,9 +207,9 @@ void TurnOn(uint8_t port) {
     ci74HC595Write(port, HIGH);
     delay(200);
     ci74HC595Write(port, LOW);
-    Serial.print("Device ");
+    Serial.print("Device: ");
     Serial.print(port+1);
-    Serial.print(" - Porta ");
+    Serial.print(" - Port: ");
     Serial.print(port);
     Serial.println(" - ON");
 }
@@ -223,9 +222,9 @@ void TurnOff(uint8_t port) {
     ci74HC595Write(port, HIGH);
     delay(200);
     ci74HC595Write(port, LOW);
-    Serial.print("Device ");
+    Serial.print("Device: ");
     Serial.print(port+1);
-    Serial.print(" - Porta ");
+    Serial.print(" - Port: ");
     Serial.print(port);
     Serial.println(" - OFF");
 }
@@ -257,7 +256,7 @@ boolean connectWifi()
   }
   Serial.println("");
   if (state) {
-    Serial.print("Connected to ");
+    Serial.print("Connected to: ");
     Serial.println(ssid);
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
@@ -307,7 +306,7 @@ void addDevices(){
 void setup()
 {
   Serial.begin(115200);
-  Serial.println("Modulo Alexa Iniciado");
+  Serial.println("Alexa Started");
   
   pinMode(pinSH_CP, OUTPUT);
   pinMode(pinST_CP, OUTPUT);
@@ -401,22 +400,22 @@ void ci74HC595Write(byte pino, bool estado) {
 
   bitWrite(ciBuffer[pino / 8], pino % 8, estado);
   
-  digitalWrite(pinST_CP, LOW); //Inicia a Transmissão
+  digitalWrite(pinST_CP, LOW); //Start transmission
   
-  digitalWrite(pinDS, LOW);    //Apaga Tudo para Preparar Transmissão
+  digitalWrite(pinDS, LOW);    //Clear all to prepare transmission
   digitalWrite(pinSH_CP, LOW);
   
   for (int nC = qtdeCI-1; nC >= 0; nC--) {
       for (int nB = 7; nB >= 0; nB--) {
   
-          digitalWrite(pinSH_CP, LOW);  //Baixa o Clock      
+          digitalWrite(pinSH_CP, LOW);  //Set clock down
           
-          digitalWrite(pinDS,  bitRead(ciBuffer[nC], nB) );     //Escreve o BIT
+          digitalWrite(pinDS,  bitRead(ciBuffer[nC], nB) );     //Write BIT
           
-          digitalWrite(pinSH_CP, HIGH); //Eleva o Clock
-          digitalWrite(pinDS, LOW);     //Baixa o Data para Previnir Vazamento      
+          digitalWrite(pinSH_CP, HIGH); //Set clock up
+          digitalWrite(pinDS, LOW);     //Set data to prevent leak
       }  
   }
   
-  digitalWrite(pinST_CP, HIGH);  //Finaliza a Transmissão
+  digitalWrite(pinST_CP, HIGH);  //Finish Transmission
 }
