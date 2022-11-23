@@ -366,7 +366,7 @@ void setup()
   else
   {
     Serial.println("Cannot connect to WiFi. So in Manual Mode");
-    delay(1000);
+    delay(10000);
   }
 }
 
@@ -377,6 +377,8 @@ void loop()
     Serial.println(wifiConnected);
     digitalWrite(wifiLedOn, OFF);
     digitalWrite(wifiLedOff, ON);
+       
+    delay(50000);
   } else {
     digitalWrite(wifiLedOn, ON);
     digitalWrite(wifiLedOff, OFF);
@@ -384,7 +386,7 @@ void loop()
     //WiFi Control
     if (wifiConnected){
       espalexa.loop();
-      delay(10);
+      delay(100);
     } else {
       wifiConnected = connectWifi(); // Initialise wifi connection
       if(wifiConnected){
